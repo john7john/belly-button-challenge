@@ -1,20 +1,20 @@
-// The url with data
+
 const url = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json"
 
-// Display the default plots
+
 function init() {
 
-    // Use D3 to select the dropdown menu
+    //  dropdown menu
     let dropdownMenu = d3.select("#selDataset");
 
-    // Fetch the JSON data and console log it
+    
     d3.json(url).then((data) => {
         console.log(`Data: ${data}`);
 
-        // An array of id names
+        
         let names = data.names;
 
-        // Iterate through the names Array
+        
         names.forEach((name) => {
             // Append each name as an option to the drop down menu
             // This is adding each name to the html file as an option element with value = a name in the names array
@@ -41,18 +41,17 @@ function demo(selectedValue) {
         // An array of metadata objects
         let metadata = data.metadata;
         
-        // Filter data where id = selected value after converting their types 
-        // (bc meta.id is in integer format and selectValue from is in string format)
+         
+        
         let filteredData = metadata.filter((meta) => meta.id == selectedValue);
       
-        // Assign the first object to obj variable
+        
         let obj = filteredData[0]
         
         // Clear the child elements in div with id sample-metadata
         d3.select("#sample-metadata").html("");
   
-        // Object.entries() is a built-in method in JavaScript 
-        // This returns an array of a given object's own enumerable property [key, value]
+                 
         let entries = Object.entries(obj);
         
         // Iterate through the entries array
